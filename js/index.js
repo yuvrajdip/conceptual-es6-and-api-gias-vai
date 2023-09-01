@@ -29,27 +29,32 @@ const handleLoadNews = async (category_id) => {
   console.log(data.data)
   data = data.data
 
+  //** Sorting according to Total_view */
+  data.sort((a,b) => b.total_view - a.total_view ) // sorting array of objects according to a specific value
+
   const cardContainer = document.getElementById('card-container')
 
   data.forEach(news => {
     console.log(news);
     const div = document.createElement('div')
     div.innerHTML = `
-    <div class="card w-full bg-base-100 shadow-xl">
-    <figure><img src="${news.image_url}" alt="Shoes" /></figure>
-    <div class="card-body">
-      <h2 class="card-title">${news.title.slice(0,40)+"..."}</h2>
-      <p>${news.details.slice(0,60)+"..."}</p>
-      <p>Total views : ${news.total_view}</p>
-      <div class="card-actions justify-end">
-        <button class="btn btn-primary">Show Details</button>
+      <div class="card w-full bg-base-100 shadow-xl">
+        <figure><img src="${news.image_url}" alt="Shoes" /></figure>
+        <div class="card-body">
+          <h2 class="card-title">${news.title.slice(0, 40) + "..."}</h2>
+          <p>${news.details.slice(0, 60) + "..."}</p>
+          <p>Total views : ${news.total_view}</p>
+          <div class="card-actions justify-end">
+            <button class="btn btn-primary">Show Details</button>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>FFF
     `
 
     cardContainer.appendChild(div)
   })
 }
+
+
 
 handleCategory()
