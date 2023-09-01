@@ -43,7 +43,7 @@ const handleLoadNews = async (category_id) => {
         <div class="card-body">
           <h2 class="card-title">${news.title.slice(0, 40) + "..."}</h2>
           <p>${news.details.slice(0, 60) + "..."}</p>
-          <p>Total views : ${news.total_view}</p>
+          <p>Total views : ${news.total_view===0 ? 'no views' : news.total_view }</p>
           <div class="card-actions justify-end">
             <button class="btn btn-primary">Show Details</button>
           </div>
